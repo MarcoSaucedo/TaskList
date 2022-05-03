@@ -22,9 +22,9 @@ public class TaskList {
     }
 
     public Task find(String tarea) throws TaskNotFoundException{
-        for(int i=0;i<taskLinkedList.size();i++){
-            if(tarea == taskLinkedList.get(i).getTitle()){
-                return taskLinkedList.get(i);
+        for (Task task : taskLinkedList) {
+            if (tarea == task.getTitle()) {
+                return task;
             }
         }
         throw new TaskNotFoundException("Task with title 'Hacer ejercicio' not found");
@@ -34,7 +34,7 @@ public class TaskList {
         Task task = find(tarea);
 
         task.setDone(true);
-        //task.isDone() = true;
+
 
     }
 
@@ -50,7 +50,7 @@ public class TaskList {
         int size = taskLinkedList.size(),i;
 
         for(i = 0; !Objects.equals(title, taskLinkedList.get(i).getTitle()) && size > i; i++);
-        return taskLinkedList.get(i+1);//**
+        return taskLinkedList.get(i+1);
     }
 
     public List<Task> getNextTasks() {
